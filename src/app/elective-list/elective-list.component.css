@@ -1,0 +1,134 @@
+.elective-list-header {
+  background-color: #4a90e2;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+}
+
+.elective-filter {
+  background-color: #e1f1ff;
+  padding: 8px;
+}
+
+.result-count {
+  text-align: center;
+  font-size: 18px;
+  color: #3972b4;
+  margin: 4px 0;
+  background-color: #ffffff; /* Fondo blanco para destacar */
+  border: 1px solid #4a90e2; /* Borde azul */
+  border-radius: 4px; /* Bordes redondeados */
+  padding: 2px; /* Padding interno */
+}
+
+
+/* .result-count {
+  text-align: center;
+  font-size: 18px;
+  color: #4a90e2;
+  margin: 5px 0; 
+  padding: 5px 0; /* Reduce el padding superior e inferior 
+}
+ */
+
+
+.elective-filter label{
+  font-size: 18px; /* Tamaño de fuente claro y legible */
+  color: #3972b4; /* No estoy seguro del color*/
+}
+
+.elective-filter button {
+  border: 1px solid #4a90e2; /* Borde azul para combinar con el tema */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 4px 8px; /* Padding interno para mayor comodidad */
+  font-size: 16px; /* Tamaño de fuente */
+  color: #333; /* Color del texto */
+  cursor: pointer; /* Cursor de mano para indicar interactividad */
+  transition: border-color 0.3s ease; /* Transición suave para el borde */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+  margin-right: 5px;
+}
+
+.elective-filter select {
+  border: 1px solid #4a90e2; /* Borde azul para combinar con el tema */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 4px 2px; /* Padding interno para mayor comodidad */
+  font-size: 16px; /* Tamaño de fuente */
+  color: #333; /* Color del texto */
+  cursor: pointer; /* Cursor de mano para indicar interactividad */
+  transition: border-color 0.3s ease; /* Transición suave para el borde */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+  margin-right: 5px;
+}
+
+.filter-modalidad {
+  font-size: 10px; /* Tamaño de fuente */
+  color: #333; /* Color del texto */
+  transition: border-color 0.3s ease; /* Transición suave para el borde */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+  margin-right: 5px;
+}
+
+/* Estilo para el select cuando está enfocado */
+.elective-filter select:focus {
+  border-color: #357ABD; /* Cambio de color del borde al enfocar */
+  outline: none; /* Quitar el borde de enfoque predeterminado */
+}
+
+.elective-filter select {
+  padding: 1px 1px; /* Ajusta el padding interno */
+  font-size: 15px; /* Reduce el tamaño de la fuente */
+  height: auto; /* Ajusta la altura automáticamente */
+}
+
+
+
+.elective-items-container {
+  flex: 1;
+  overflow-y: auto;
+  height: calc(100vh - 220px); 
+}
+
+.elective-item {
+  border-bottom: 1px solid #4a90e2;
+  padding: 10px;
+  background-color: #ffffff;
+  cursor: default;
+}
+
+.elective-item p {
+  margin: 0;
+}
+
+.elective-item button {
+  margin-top: 5px;
+  padding: 5px 10px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.elective-item button:hover {
+  background-color: #357ABD;
+}
+
+.datalist-container {
+  display: flex;
+  align-items: center;
+}
+
+.datalist-container input[type="range"] {
+  margin-right: 10px;
+}
+
+.elective-details {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: #f7f8f8;
+}
+/* 
+CXZKLJXKZCL */

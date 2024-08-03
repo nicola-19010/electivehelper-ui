@@ -1,0 +1,51 @@
+<div class="elective-list-header">Lista de Electivos</div>
+
+<div class="elective-filter">
+    <form [formGroup]="filterForm">
+        <!-- <div class="result-count">
+            <p>Resultados encontrados: {{ filteredElectives.size }}</p>
+        </div>
+         -->
+        <div class="datalist-container">
+            <label for="slider-periods">Filtrar por Periodos con Topón:</label>
+            <input type="range" id="slider-periodos" min="0" max="3" step="1" formControlName="periods" />
+            <span>{{ filterForm.get('periods')?.value }}</span>
+        </div>
+
+        <!-- <br> -->
+        <label for="filter-modalidad" class="filter-modalidad">Modalidad: </label>
+        <select id="filter-modalidad" formControlName="modality">
+            <option value="Cualquiera">Cualquiera</option>
+            <option value="Presencial">Presencial</option>
+            <option value="Presencial - Remoto">Presencial - Remoto</option>
+            <option value="Online">Online</option>
+        </select>
+
+        <button type="button" (click)="applyFilters()">Buscar</button>
+        <div class="result-count">
+            Número de resultados: {{ filteredElectives.size }}
+        </div>
+    </form>
+</div>
+
+<div class="elective-items-container">
+    @if(filteredElectives.size == 0) {
+        <p style="color: rgb(80, 15, 15); font-size: 16px; text-align: center; margin: 20px 0;">No se encontraron electivos con estas condiciones.</p>
+    }
+
+    @for (elective of filteredElectives.keys(); track $index) {
+    <div class="elective-item">
+        <p>{{ elective.eleName }}</p>
+        <button (click)="selectElective(elective)">Seleccionar</button>
+        @if (selectedElectiveDetails && selectedElectiveDetails.eleCode === elective.eleCode && selectedElectiveDetails.eleModule === elective.eleModule) {
+            <div class="elective-details">
+                <p>Modulo: {{ selectedElectiveDetails.eleModule}}</p>
+                <p>Modalidad: {{ selectedElectiveDetails.eleMode }}</p>
+                <p>Codigo: {{ selectedElectiveDetails.eleCode }}</p>
+                <p>Docente: {{ selectedElectiveDetails.eleInstructor }}</p>
+            </div>
+        }
+        
+    </div>
+    }
+</div>

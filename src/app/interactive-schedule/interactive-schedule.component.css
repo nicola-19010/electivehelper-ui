@@ -1,0 +1,175 @@
+/* Elimina el scroll de la página */
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Desactiva el scroll en la página */
+}
+
+.schedule-container {
+  display: flex;
+  flex-direction: row; 
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.table-container {
+  flex: 2 1 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.elective-list-container {
+  flex: 1 1 0; 
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Mantener oculto el scroll si el contenido se excede */
+  margin-left: 20px; /* Espacio entre la tabla y la lista de electivos */
+  border: 2px solid #4a90e2;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Asegúrate de que la tabla se ajuste al tamaño disponible */
+.Normal {
+  border: 2px solid #4a90e2;
+  border-collapse: collapse;
+  width: 100%;
+  height: 100%;
+  table-layout: fixed; /* Asegurar que las celdas se ajusten al ancho disponible */
+}
+
+.header-row {
+  background-color: #4a90e2;
+  color: #ffffff;
+}
+
+.header-row th {
+  padding: 4px; /* Reducir padding para ajustar más contenido */
+  font-size: 12px; /* Reducir tamaño de la fuente */
+}
+
+.period-row {
+  text-align: center;
+  background-color: #e1f1ff;
+}
+
+.period-cell {
+  border: 1px solid #4a90e2;
+  padding: 4px; /* Reducir padding para ajustar más contenido */
+  font-size: 10px; /* Reducir tamaño de la fuente */
+  color: #333;
+}
+
+.slot-cell {
+  border: 1px solid #4a90e2;
+  padding: 4px; /* Reducir padding para ajustar más contenido */
+  font-size: 10px; /* Reducir tamaño de la fuente */
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.selected-slot {
+  background-color: #d4edd4;
+}
+
+.selected-elective {
+  background-color: #ffff00; /* Color amarillo para el slot del electivo seleccionado */
+  cursor: default; /* Hace que la celda no sea clickeable */
+  overflow: hidden; /* Oculta cualquier contenido que se desborde del contenedor */
+  text-overflow: ellipsis; /* Muestra '...' para indicar que el texto se ha truncado */
+  font-size: clamp(2px, 1vw, 10px);
+}
+
+.styled-button {
+  margin-right: 5px;
+  background-color: #4a90e2; /* Color de fondo */
+  color: #ffffff; /* Color del texto */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Padding alrededor del texto */
+  font-size: 16px; /* Tamaño de la fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de mano para indicar que es clickeable */
+  transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
+}
+
+.styled-button:hover {
+  background-color: #357ABD; /* Color de fondo al pasar el ratón */
+}
+
+.styled-button:active {
+  background-color: #2E5A91; /* Color de fondo al hacer clic */
+}
+
+.styled-button:focus {
+  outline: none; /* Quitar el borde de enfoque predeterminado */
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.5); /* Sombra de caja para enfoque accesible */
+}
+
+h2 {
+  display: inline-block;
+  margin-left: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(20px, 1vw, 30px);
+  font-weight: bold;
+  color: #3b5998; /* Color azul Facebook */
+  border-bottom: 2px solid #3b5998; /* Línea inferior */
+  padding-bottom: 2px;
+  vertical-align: middle;
+}
+
+p {
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(16px, 1vw, 24px);
+  color: #555555; /* Gris oscuro para una buena legibilidad */
+  font-weight: normal;
+  margin-left: 10px;
+  border-bottom: 2px solid #eeeeee; /* Línea inferior ligera */
+  padding-bottom: 2px;
+  vertical-align: middle;
+}
+
+.mode-toggle-button {
+  margin-right: 5px;
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Padding alrededor del texto */
+  font-size: 16px; /* Tamaño de la fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de mano para indicar que es clickeable */
+  transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
+  font-family: 'Arial', sans-serif;
+  background-color: #ffffff;
+  /* border: 2px solid #4a90e2; */
+}
+
+.mode-toggle-button.free-mode {
+  background-color: #d4edd4; /* Verde para modo libre */
+}
+
+.mode-toggle-button.free-mode:hover {
+  background-color: #a6dea6; /* Verde más oscuro al pasar el ratón */
+}
+
+.mode-toggle-button.free-mode:active {
+  transform: scale(0.98); /* Efecto de clic */
+}
+
+/* Estilo para el modo ocupado */
+.mode-toggle-button.occupied-mode {
+  background-color: #edd4d4; /* Rojo para modo ocupado */
+}
+
+.mode-toggle-button.occupied-mode:hover {
+  background-color: #e7afaf; /* Rojo más oscuro al pasar el ratón */
+}
+
+.mode-toggle-button.occupied-mode:active {
+  transform: scale(0.98); /* Efecto de clic */
+}
+
+.mode-toggle-button span.icon {
+  font-size: 15px; /* Tamaño del círculo, ajusta según sea necesario */
+  margin-right: 8px; /* Espaciado entre el ícono y el texto */
+}

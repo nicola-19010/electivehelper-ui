@@ -1,0 +1,60 @@
+<body>
+<button class="styled-button" (click)="cleanSlots()">Limpiar horario</button>
+<button class="styled-button" (click)="fillSlots()">Llenar horario</button>
+<button class="mode-toggle-button" (click)="changeMode()" 
+        [ngClass]="{'free-mode': freeSlotsMode, 'occupied-mode': !freeSlotsMode}"
+        [ngStyle]="{
+            'box-shadow': freeSlotsMode ? 'inset 0 0 0 3px rgba(46, 204, 113, 0.5)' : 'inset 0 0 0 3px rgba(231, 76, 60, 0.5)' 
+        }">
+        <span class="icon" *ngIf="freeSlotsMode">🟢</span>
+        <span class="icon" *ngIf="!freeSlotsMode">🔴</span>
+        <span *ngIf="freeSlotsMode">Marcar periodos libres</span>
+        <span *ngIf="!freeSlotsMode">Marcar periodos ocupados</span>
+</button>
+
+<br><br>
+<div class="schedule-container">
+    <div class="table-container">
+        <table border="1" width="100%" class="Normal">
+            <tbody>
+                <tr class="header-row">
+                    <th width="10%">Periodo</th>
+                    @for (day of days; track $index) {
+                        <th width="20%">{{ day }}</th>
+                    }
+                </tr>
+        
+                @for (period of periods; track $index) {
+                    <tr class="period-row">
+                        <td class="period-cell">
+                            {{ period.periodName }}<br>{{ period.startTime }}<br>{{ period.endTime }}
+                        </td>
+                        @for (day of days; track $index) {
+                            @if (selectedElective && sameDayAndPeriod(selectedElective, day, period.periodName)) {
+                                <td class="selected-elective" title="{{getElectivePlace(selectedElective, day, period)}}">
+                                    {{selectedElective.eleName}}</td>   
+                            }@else {
+                                <td
+                                (click)="selectSlot(day, period)"
+                                [ngClass]="{
+                                    'slot-cell': true,
+                                    'selected-slot': isSlotSelected(day, period)
+                                }"
+                                [ngStyle]="{
+                                    'background-color': isSlotSelected(day, period) ? (freeSlotsMode ? '#d4edd4' : '#edd4d4') : '#ffffff'
+                                }"
+                                >&nbsp;</td>
+                            } 
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="elective-list-container">
+        <app-elective-list [selectedSlots]="selectedSlots" [freeSlotsMode]="freeSlotsMode" (selectedElective)="onElectiveSelected($event)"></app-elective-list>
+    </div>
+</div>
+
+
+</body>
